@@ -1,0 +1,1 @@
+Both the empirical and theoretical values shown in Figure 2 are computed in the file "correlation_vis_simple.R"

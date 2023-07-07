@@ -1,0 +1,1 @@
+All panels of Figure 1 are created in the file run_intro_figures.R
