@@ -1,3 +1,3 @@
-The code to generate the figures using the stored analysis results can be found in XXXXXX. 
+The file Real_data_confusion_mats.R will create Figure 8 for you, using the results stored in the real_data_results folder. 
 
-The code to produce the results can be found in (FILL IN FROM JOSH). 
+The script that allows you to reproduce the results in the real_data_results folder is found in XXXXXXX, and uses data that can be downloaded from https://descartes.brotmanbaty.org. 

@@ -1,0 +1,3 @@
+The file make_fig_multifold.R will create Figure 5 for you, using existing results that are stored in the "res" folder.
+
+To reproduce the results from the "res" folder, you need to run the file run_preopCor_smallDim a total of 2000 times (only 500 replications are stored in the "res" folder, for repository size reasons). You will also need access to simulation_functions.R, which is stored in the main directory. 
