@@ -24,16 +24,16 @@ p1 <- ggplot(data=NULL, aes(x=hX[,1], y=hX[,2]))+geom_point()+xlab("Gene 1 (log 
 
 ### Make panel b of Figure 1
 set.seed(2)
-cluster.full <- kmeans(hX, centers=2, nstart=20)$cluster
+cluster.full1 <- kmeans(hX, centers=2, nstart=20)$cluster
 k2_SSE <- 0
 for (k in 1:2) {
-  clusterDat <- hX[cluster.full==k,]
+  clusterDat <- hX[cluster.full1==k,]
   clusterMean <- colMeans(clusterDat)
   k2_SSE <- k2_SSE + sum(apply(clusterDat,1,function(u) (u-clusterMean)^2))
 }
 k2_MSE <- k2_SSE/200
 pval <- summary(MASS::glm.nb(X[,1]~as.factor(cluster.full)))$coefficients[2,4]
-p2 <- ggplot(data=NULL, aes(x=hX[,1], y=hX[,2], col=as.factor(cluster.full)))+
+p2 <- ggplot(data=NULL, aes(x=hX[,1], y=hX[,2], col=as.factor(cluster.full1)))+
   geom_point()+xlab("Gene 1 (log scale)")+ ylab("Gene 2 (log scale)")+
   theme_bw()+coord_fixed()+theme(panel.grid.major=element_blank(), 
                                  panel.grid.minor=element_blank())+
@@ -137,9 +137,9 @@ for (t in 1:nTrials) {
 }
 
 pQQthree <- ggplot(data=NULL)+
-  geom_qq(aes(sample=as.numeric(pvals_sampsplit), col="bSample Splitting"), distribution="qunif")+
-  geom_qq(aes(sample=as.numeric(pvalsNaive), col="aUse data twice"), distribution="qunif")+
-  geom_qq(aes(sample=as.numeric(pvals_cs), col="cOur proposed method"), distribution="qunif")+
+  geom_qq(aes(sample=as.numeric(pvals_sampsplit), col="bSample Splitting"), distribution=stats::qunif)+
+  geom_qq(aes(sample=as.numeric(pvalsNaive), col="aUse data twice"), distribution=stats::qunif)+
+  geom_qq(aes(sample=as.numeric(pvals_cs), col="cOur proposed method"), distribution=stats::qunif)+
   theme_bw()+
   scale_color_manual(values=c(naiveCol, sampSplitCol, csCol),
                      labels=c("Use full data twice", "Sample Splitting", "Our proposed method"))+
