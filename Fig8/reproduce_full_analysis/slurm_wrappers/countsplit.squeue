@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# sbatch countsplit.sbatch "kidney" "pois"
+# sbatch countsplit.sbatch "kidney" "nb"
+# 
+# sbatch countsplit.sbatch "mesangium" "pois"
+# sbatch countsplit.sbatch "mesangium" "nb"
+
+declare -a Seeds=(75 803 498 184 463 552 145 191 401 254)
+
+for s in ${Seeds[@]}; do
+  sbatch countsplit.sbatch "kidney" "pois" $s
+  sbatch countsplit.sbatch "kidney" "nb" $s
+
+  #sbatch countsplit.sbatch "metanephric" "pois" $s
+  #sbatch countsplit.sbatch "metanephric" "nb" $s
+done

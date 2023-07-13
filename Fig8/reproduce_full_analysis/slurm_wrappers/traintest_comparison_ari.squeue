@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sbatch traintest_comparison_ari.sbatch "kidney" "pois"
+sbatch traintest_comparison_ari.sbatch "kidney" "nb"
+
+# sbatch traintest_comparison_ari.sbatch "metanephric" "pois"
+# sbatch traintest_comparison_ari.sbatch "metanephric" "nb"
+
+# sbatch cluster_cds.sbatch "mesangium" "full"
+# sbatch cluster_cds.sbatch "mesangium" "poistrain"
+# sbatch cluster_cds.sbatch "mesangium" "poistest"
+# sbatch cluster_cds.sbatch "mesangium" "nbtrain"
+# sbatch cluster_cds.sbatch "mesangium" "nbtest"

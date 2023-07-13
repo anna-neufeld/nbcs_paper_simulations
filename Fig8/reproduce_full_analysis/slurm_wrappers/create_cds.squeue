@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# sbatch create_cds.sbatch "kidney" "full"
+# sbatch create_cds.sbatch "metanephric" "full"
+
+declare -a Seeds=(75 803 498 184 463 552 145 191 401 254)
+
+for s in ${Seeds[@]}; do
+  sbatch create_cds.sbatch "kidney" "poistrain" $s
+  sbatch create_cds.sbatch "kidney" "poistest" $s
+  sbatch create_cds.sbatch "kidney" "nbtrain" $s
+  sbatch create_cds.sbatch "kidney" "nbtest" $s
+
+  # sbatch create_cds.sbatch "metanephric" "poistrain" $s
+  # sbatch create_cds.sbatch "metanephric" "poistest" $s
+  # sbatch create_cds.sbatch "metanephric" "nbtrain" $s
+  # sbatch create_cds.sbatch "metanephric" "nbtest" $s
+done
+
+# sbatch create_cds.sbatch "mesangium" "full"
+# sbatch create_cds.sbatch "mesangium" "poistrain"
+# sbatch create_cds.sbatch "mesangium" "poistest"
+# sbatch create_cds.sbatch "mesangium" "nbtrain"
+# sbatch create_cds.sbatch "mesangium" "nbtest"
